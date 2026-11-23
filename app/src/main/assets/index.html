@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fahzy AI Scanner</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="login" class="screen">
+  <div class="login-box">
+    <div class="logo">✦</div>
+    <h1>Fahzy <span>AI</span></h1>
+    <p>Smart Study Assistant</p>
+    <input id="username" placeholder="Nama pengguna">
+    <input id="password" type="password" placeholder="Password">
+    <button onclick="login()">Masuk</button>
+    <small>Login lokal untuk perangkat ini</small>
+  </div>
+</div>
+
+<div id="app" class="hidden">
+  <header>
+    <div>
+      <small>WELCOME BACK</small>
+      <h2>Fahzy <span>AI</span></h2>
+    </div>
+    <button class="icon" onclick="showPage('settings')">⚙</button>
+  </header>
+
+  <main>
+    <section id="home" class="page">
+      <div class="hero">
+        <div class="tag">✦ AI POWERED</div>
+        <h1>Belajar lebih<br><span>cerdas.</span></h1>
+        <p>Foto soalmu. Biarkan AI membantu memahami jawabannya.</p>
+        <button onclick="showPage('scanner')">Mulai Scan ↗</button>
+      </div>
+
+      <h3>Fitur utama</h3>
+      <div class="feature">
+        <div>📷</div>
+        <section><b>AI Scanner</b><p>Analisis soal dari gambar.</p></section>
+      </div>
+      <div class="feature">
+        <div>🧠</div>
+        <section><b>Pembahasan pintar</b><p>Pelajari langkah penyelesaiannya.</p></section>
+      </div>
+      <div class="feature">
+        <div>⚡</div>
+        <section><b>Gemini AI</b><p>Analisis soal menggunakan AI.</p></section>
+      </div>
+    </section>
+
+    <section id="scanner" class="page hidden">
+      <h2>AI Scanner</h2>
+      <p class="muted">Pilih foto soal yang ingin dianalisis.</p>
+      <div class="upload">
+        <div style="font-size:40px">📸</div>
+        <p>Masukkan gambar soal</p>
+        <input type="file" id="photo" accept="image/*">
+      </div>
+      <img id="preview" class="preview hidden">
+      <textarea id="prompt" placeholder="Contoh: Jelaskan langkah penyelesaiannya..."></textarea>
+      <button id="scanBtn" onclick="scan()">✦ Analisis soal</button>
+      <div id="loading" class="hidden">
+        <div class="loader"></div>
+        <p>AI sedang menganalisis...</p>
+      </div>
+      <div id="result" class="result hidden">
+        <h3>✦ Hasil analisis</h3>
+        <pre id="answer"></pre>
+        <button class="secondary" onclick="copyAnswer()">Salin jawaban</button>
+      </div>
+    </section>
+
+    <section id="settings" class="page hidden">
+      <h2>Pengaturan</h2>
+      <div class="panel">
+        <h3>Gemini API</h3>
+        <p class="muted">Masukkan API Key milikmu.</p>
+        <input id="apiKey" type="password" placeholder="Gemini API Key">
+        <button onclick="saveKey()">Simpan API Key</button>
+        <p class="muted" id="keyStatus"></p>
+      </div>
+      <div class="panel">
+        <h3>Akun</h3>
+        <p id="account"></p>
+        <button class="danger" onclick="logout()">Keluar</button>
+      </div>
+      <div class="panel">
+        <h3>Tentang aplikasi</h3>
+        <p>Fahzy AI Scanner v1.0</p>
+        <p class="muted">Java + WebView + Gemini AI</p>
+      </div>
+    </section>
+  </main>
+
+  <nav>
+    <button onclick="showPage('home')">⌂<small>Home</small></button>
+    <button onclick="showPage('scanner')">◎<small>Scanner</small></button>
+    <button onclick="showPage('settings')">⚙<small>Settings</small></button>
+  </nav>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
